@@ -1,6 +1,3 @@
-GITHUB README DRAFT (paste into README.md)
-----------------------------------------
-
 Resume system: LaTeX template plus AI skills
 
 Edit your resume with an AI inside your code editor. The repo holds a LaTeX template the AI edits directly, plus skills files that set the rules.
@@ -27,18 +24,3 @@ Rules
 Thanks to James Yu for LaTeX Workshop.
 
 License: MIT. See LICENSE.
-
-
-REPO DESCRIPTION (one line for GitHub About box)
-----------------------------------------
-LaTeX resume template plus AI skills. Edit and tailor your resume from your code editor.
-
-
-SUGGESTED TOPICS
-----------------------------------------
-latex, resume, resume-template, internships, job-search, ai-assisted, vscode, cursor, latex-workshop, career-tools
-
-
-LICENSE NOTE
-----------------------------------------
-MIT. Anyone can use, fork, and ship, including commercial use. They must keep your copyright line. Fill in the year and your name in LICENSE before you publish.
