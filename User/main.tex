@@ -1,0 +1,212 @@
+\documentclass[10pt, letterpaper]{article}
+\newenvironment{highlights}{\begin{itemize}[leftmargin=*, itemsep=0.25em]}{\end{itemize}}
+% --- 1. CORE LAYOUT & SPACING ---
+\usepackage[letterpaper, top=0.7cm, bottom=0.7cm, left=1cm, right=1cm, ignoreheadfoot]{geometry} % Sets the page boundaries
+\usepackage{titlesec} % Controls section header formatting
+\usepackage{enumitem} % Allows precise control over list/bullet spacing
+\usepackage[dvipsnames]{xcolor} % For colors
+\usepackage{fontawesome5} % Provides social media and contact icons
+\usepackage{amsmath} % Basic math symbols
+\usepackage{calc} % Enables calculations
+\usepackage{changepage} % Provides 'adjustwidth' for indentation
+\usepackage{paracol} % Handles the multi-column layout for dates
+\usepackage{needspace} % Prevents section titles from being at the bottom of a page
+\usepackage{iftex} % Checks if you are using PDFLaTeX, XeLaTeX, or LuaLaTeX
+
+% --- 2. LINKS & METADATA ---
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+\usepackage[
+pdftitle={User's CV},
+pdfauthor={User},
+pdfcreator={LaTeX},
+colorlinks=true,
+urlcolor=primaryColor
+]{hyperref}
+\usepackage{bookmark} % Better bookmarks for the PDF reader
+
+% --- 3. ATS & FONT SETTINGS ---
+% Ensures the PDF is machine-readable and uses the correct encoding
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern} % The specific font family for your resume
+\fi
+
+% --- 4. GLOBAL PAGE STYLING ---
+\raggedright % Prevents LaTeX from stretching text to the right margin
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % Removes extra vertical space in adjustwidth
+\pagestyle{empty} % Removes page numbers and headers
+\setcounter{secnumdepth}{0} % Prevents section numbering
+\setlength{\parindent}{0pt} % Disables automatic paragraph indentation
+\setlength{\columnsep}{0.15cm} % Spacing between columns in paracol
+\pagenumbering{gobble} % Final double-check to hide page numbers
+
+% --- 5. CUSTOM SECTION FORMATTING ---
+% This defines the bold line and font size for your headers
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.1 cm}{0.07 cm}
+
+% Standard bullet point style
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+
+% --- 6. CUSTOM ENVIRONMENTS (The Layout Engines) ---
+
+% One column entry: Basic text block with specific micro-indentation
+\newenvironment{onecolentry}{
+\begin{adjustwidth}{0 cm + 0.00001 cm}{0 cm + 0.00001 cm}
+    }{
+\end{adjustwidth}
+}
+
+% Two column entry: Used for [Job Title / Education] on left, [Dates] on right
+% Column width set to 5.2cm to guarantee single-line fit for full dates
+\newenvironment{twocolentry}[2][]{
+\onecolentry
+\def\secondColumn{#2}
+\setcolumnwidth{\fill, 5.2 cm}
+\begin{paracol}{2}
+    }{
+    \switchcolumn \raggedleft \secondColumn
+\end{paracol}
+\endonecolentry
+}
+
+% Header style: Centers your name and sets line height
+\newenvironment{header}{
+\setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+\par\kern\topsep
+}
+
+% --- DOCUMENT START ---
+\begin{document}
+    % Custom separator for the header contacts
+    \newcommand{\AND}{\unskip\cleaders\copy\ANDbox\hskip\wd\ANDbox\ignorespaces}
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{20 pt}{20 pt}\selectfont \href{}{First Last}
+
+        \vspace{1 pt}
+
+        \normalsize
+        \kern 0.5 pt
+        \mbox{\href{mailto:user@example.com}{user@example.com}}
+        \kern 5.0 pt \AND \kern 5.0 pt
+        \mbox{\href{tel:+1-XXXXXXXXXX}{(XXX) XXX-XXXX}}
+        \kern 5.0 pt \AND \kern 5.0 pt
+        \mbox{\href{https://linkedin.com/in/user}{linkedin.com/in/user}}
+        \kern 5.0 pt \AND \kern 5.0 pt
+        \mbox{\href{https://github.com/user}{github.com/user}}
+    \end{header}
+
+    \vspace{5 pt - 0.2 cm}
+
+    \section{Education}
+    \begin{twocolentry}{
+        \mbox{\textbf{Month~20XX -- Month~20XX}} \\
+        \mbox{\textit{GPA: X.XX}}
+        }
+        \hspace*{0.2cm}\textbf{Bachelor of Lorem in ipsum} \\
+        \hspace*{0.2cm}\textit{Lorem Ipsum University, City, State}
+    \end{twocolentry}
+
+    \vspace{0.04 cm}
+    \begin{adjustwidth}{0.0cm}{2.5cm}
+        \hspace*{0.2cm}\textbf{Coursework:} \textit{Lorem Ipsum}, Dolor Sit Amet, \textbf{Consectetur Adipiscing}, Elit Sed Do, Eiusmod Tempor
+    \end{adjustwidth}
+    \section{Skills}
+    \begin{onecolentry}
+        \begin{itemize}[leftmargin=0cm + 6.5pt, labelsep=5pt]
+            \textbf{Languages \& Tools:} \textbf{Lorem}, Ipsum, \textit{Dolor}, Sit, \textbf{Amet}, Consectetur | \textbf{Adipiscing}, Elit, Sed, Do, \textit{Eiusmod}
+
+            \vspace{0.04 cm}
+            \textbf{Frameworks \& Platforms:} \textbf{Lorem Ipsum}, Dolor, \textit{Sit Amet}, Consectetur, \textbf{Adipiscing Elit}, Sed Do Eiusmod, Tempor
+
+            \vspace{0.04 cm}
+            \textbf{Certifications \& Honors:} \textbf{Lorem Competition} (\textbf{Xth Place}), \textbf{Ipsum Award} (\textbf{Rank X}), \textit{Dolor Certification}, \textbf{Amet Program}
+        \end{itemize}
+    \end{onecolentry}
+
+    \section{Experience}
+    \begin{twocolentry}{\mbox{\textbf{Month~20XX -- Present}}}
+        \hspace*{0.1cm} \textbf{Lorem Ipsum Engineer} \\
+        \hspace*{0.1cm} \textit{\href{https://example.com}{Lorem Corporation}, City, State (Remote)}
+    \end{twocolentry}
+    \vspace{0.02 cm}
+    \begin{onecolentry}
+        \begin{itemize}[leftmargin=0.4cm + 10pt, labelsep=5pt]
+            \item Lorem ipsum dolor sit amet, consectetur \textbf{X\%} adipiscing elit, sed do eiusmod \textbf{Tempor Incididunt} ut labore et dolore (\textbf{Magna Aliqua})
+            \item Ut enim ad minim veniam, quis nostrud \textit{exercitation ullamco} laboris nisi ut aliquip ex ea \textbf{``commodo-consequat''} architecture et (\textbf{Duis Aute})
+            \item Duis aute irure dolor in reprehenderit in voluptate sub-\textbf{Xms} velit esse cillum dolore eu \textbf{Fugiat Nulla Layer}; prepared for \textbf{X,XXX+} pariatur by implementing (\textbf{Excepteur/Sint})
+        \end{itemize}
+    \end{onecolentry}
+
+    \vspace{0.03 cm}
+    \begin{twocolentry}{\mbox{\textbf{Month~20XX -- Month~20XX}}}
+        \hspace*{0.1cm} \textbf{Dolor Sit Associate} \\
+        \hspace*{0.1cm} \textit{\href{https://example.com}{Ipsum Technologies}, City, State}
+    \end{twocolentry}
+    \vspace{0.02 cm}
+    \begin{onecolentry}
+        \begin{itemize}[leftmargin=0.4cm + 10pt, labelsep=5pt]
+            \item Sed ut perspiciatis unde omnis iste natus error \textbf{XXK+} sit voluptatem accusantium doloremque laudantium, totam rem aperiam (\textbf{Eaque Ipsa})
+            \item Nemo enim ipsam voluptatem quia voluptas sub-\textbf{Xms} sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui (\textbf{Ratione Voluptatem})
+        \end{itemize}
+    \end{onecolentry}
+
+    \vspace{0.03 cm}
+    \begin{twocolentry}{\mbox{\textbf{Month~20XX -- Month~20XX}}}
+        \hspace*{0.1cm} \textbf{Amet Consectetur Intern} \\
+        \hspace*{0.1cm} \textit{\href{https://example.com}{Dolor Analytics}, City, State}
+    \end{twocolentry}
+    \vspace{0.02 cm}
+    \begin{onecolentry}
+        \begin{itemize}[leftmargin=0.4cm + 10pt, labelsep=5pt]
+            \item At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti across (\textbf{Atque Corrupti, Quos Dolores, et Quas})
+            \item Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo \textbf{XX+} minus id quod maxime placeat facere possimus
+        \end{itemize}
+    \end{onecolentry}
+    \section{Selected Projects}
+    \begin{onecolentry}
+        \hspace*{0.1cm} \href{https://github.com/user/project}{\textbf{Lorem Ipsum System (Primary Hero Project)}} \\
+        \hspace*{0.1cm} \textit{Lorem, Ipsum, Dolor, Sit, Amet, Consectetur, Adipiscing, Elit}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+    \begin{onecolentry}
+        \begin{itemize}[leftmargin=0.4cm + 10pt, labelsep=5pt]
+            \item Temporibus autem quibusdam et aut officiis debitis \textbf{X$\mu$s} aut rerum necessitatibus saepe eveniet ut et voluptates (\textbf{Lorem Protocol, Ipsum Engine}) over \textbf{XX.X Gbps} fabrics
+            \item Itaque earum rerum hic tenetur a sapiente delectus sub-\textbf{Xms} ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis (\textbf{Lorem-XX Engine})
+            \item Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur p\textbf{XX} from \textbf{XX.Xs} to \textbf{X.Xs} with \textbf{XX.X\%} accuracy via (\textbf{Dolor Sit Tuning}) on \textbf{Ipsum}-cached \textbf{XXXB} to \textbf{XB} models
+        \end{itemize}
+    \end{onecolentry}
+
+    \vspace{0.03 cm}
+    \begin{onecolentry}
+        \hspace*{0.1cm} \textbf{Consectetur Adipiscing Framework (Featured Project B)} \\
+        \hspace*{0.1cm} \textit{Lorem Ipsum, Dolor Sit Amet, Consectetur, Adipiscing, Elit}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+    \begin{onecolentry}
+        \begin{itemize}[leftmargin=0.4cm + 10pt, labelsep=5pt]
+            \item Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit (\textbf{Lorem Optimization}) using \textbf{Ipsum Framework} et dolore magnam aliquam
+            \item Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam \textbf{$\sim$XX} nisi ut aliquid ex ea commodi consequatur (\textbf{X$\times$XXX MLP})
+        \end{itemize}
+    \end{onecolentry}
+
+    \vspace{0.03 cm}
+    \begin{onecolentry}
+        \hspace*{0.1cm} \textbf{Tempor Incididunt Interface (Featured Project C)} \\
+        \hspace*{0.1cm} \textit{Lorem, Ipsum, Dolor, Sit, Amet, Consectetur}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+    \begin{onecolentry}
+        \begin{itemize}[leftmargin=0.4cm + 10pt, labelsep=5pt]
+            \item Excepteur sint occaecat cupidatat non proident, sunt in culpa \textbf{XX,XXX+} qui officia deserunt mollit anim id est laborum at \textbf{XXXHz} over an (\textbf{XXXKbps Bus})
+            \item Quisi ut aliquip ex ea commodo consequat duis aute irure \textbf{XX\%} dolor in reprehenderit in voluptate sub-\textbf{Xms} velit esse cillum via (\textbf{Dolore-Magna})
+        \end{itemize}
+    \end{onecolentry}
+\end{document}
