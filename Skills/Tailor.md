@@ -46,7 +46,7 @@ Before proposing any changes, invoke a subagent (e.g., `generalist`) or use sear
    * *Cloud:* AWS -> Azure (Microsoft) -> GCP (Google)
    * *AI Assistants:* Claude Code -> GitHub Copilot (Microsoft) -> Codex (OpenAI) -> Gemini (Google)
 * **Skills Section Malleability:** Heavily tailor the `Skills` section based on the role. Remove irrelevant tools (e.g., Pandas for Web Dev) and elevate relevant ones.
-* **Transcript-backed Coursework:** Before tailoring, read `Skills/Transcript.md`. Match explicit JD coursework first, then list only 2–4 completed courses whose official titles directly support the role; remove irrelevant or unsupported entries, update the LaTeX `Coursework` line, and document the selection in `current.md`.
+* **Transcript-backed Coursework:** Before tailoring, read `Skills/Transcript.md`; match explicit JD coursework first, then select only 2–4 exact, completed courses whose official titles directly support the role. Remove irrelevant or unsupported entries, update the LaTeX `Coursework` line, and document the selection in `current.md`.
 
 ### Phase 3: Interactive Survey & Hyper-Concise Approval
 * **Hyper-Concise Presentation:** Present the Match Score, proposed tech stack swaps, and skill adjustments to the user as a list of **hyper-concise bullet points**. The user must be able to scan and approve them in seconds.

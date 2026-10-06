@@ -14,7 +14,7 @@ Use
 - Every edit must compile: pdflatex -interaction=nonstopmode main.tex
 
 Copy this line into any skills file located inside Resume/Skills/ before running the system:
-- Coursework template: Before tailoring, read `Skills/Transcript.md`; use its transcript data and coursework-selection rules to select 2–4 exact, completed courses that match the job description, update the LaTeX `Coursework` line, and document the choice in `current.md`.
+- **Transcript-backed Coursework:** Before tailoring, read `Skills/Transcript.md`; use its transcript data and coursework-selection rules to select 2–4 exact, completed courses that match the job description, update the LaTeX `Coursework` line, and document the choice in `current.md`.
 
 Thanks to James Yu for LaTeX Workshop.
 
