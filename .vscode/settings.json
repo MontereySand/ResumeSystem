@@ -1,0 +1,29 @@
+{
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/system/build/%RELATIVE_DOC%",
+  "latex-workshop.latex.auxDir": "%OUTDIR%",
+  "latex-workshop.latex.autoBuild.run": "onFileChange",
+  "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+  "latex-workshop.latex.autoClean.run": "never",
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.tab.editorGroup": "right",
+  "latex-workshop.formatting.latex": "none",
+  "latex-workshop.latex.recipes": [
+    { "name": "11ltx preview", "tools": ["11ltx-preview"] },
+    { "name": "11ltx force render", "tools": ["11ltx-preview-force"] }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "11ltx-preview",
+      "command": "latexmk",
+      "cwd": "%DIR%",
+      "args": ["-norc", "-pdf", "-synctex=1", "-interaction=nonstopmode", "-halt-on-error", "-file-line-error", "-no-shell-escape", "-outdir=%OUTDIR%", "%DOCFILE_EXT%"]
+    },
+    {
+      "name": "11ltx-preview-force",
+      "command": "latexmk",
+      "cwd": "%DIR%",
+      "args": ["-norc", "-pdf", "-g", "-synctex=1", "-interaction=nonstopmode", "-halt-on-error", "-file-line-error", "-no-shell-escape", "-outdir=%OUTDIR%", "%DOCFILE_EXT%"]
+    }
+  ]
+}

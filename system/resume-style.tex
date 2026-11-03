@@ -1,0 +1,65 @@
+% Adapted from ResumeSystem v1 (MIT); supplied original SHA-256:
+% 3db08096e578f6c687f0df265e489cc930148b9c1cd7ff70bcea96c74a0385da.
+% Presentation only; each main.tex owns its content, paper and PDF metadata.
+\usepackage[top=0.7cm,bottom=0.7cm,left=1cm,right=1cm,ignoreheadfoot]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{calc}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\definecolor{primaryColor}{RGB}{0,0,0}
+\usepackage[colorlinks=true,allcolors=primaryColor]{hyperref}
+\usepackage{bookmark}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.1cm}{0.07cm}
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+\setlist[itemize]{leftmargin=0.4cm + 10pt,labelsep=5pt,topsep=2pt,partopsep=0pt,parsep=0pt,itemsep=1pt}
+
+\newenvironment{onecolentry}{%
+    \begin{adjustwidth}{0cm + 0.00001cm}{0cm + 0.00001cm}%
+}{%
+    \end{adjustwidth}%
+}
+\newenvironment{twocolentry}[1]{%
+    \onecolentry
+    \def\secondColumn{#1}%
+    \setcolumnwidth{\fill,5.2cm}%
+    \begin{paracol}{2}%
+}{%
+    \switchcolumn\raggedleft\secondColumn
+    \end{paracol}%
+    \endonecolentry
+}
+\newenvironment{header}{%
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}\selectfont
+}{%
+    \par\kern\topsep
+}
+
+\newsavebox{\ResumeContactBox}
+\newcommand{\ResumeContact}[1]{%
+    \leavevmode\sbox{\ResumeContactBox}{#1}%
+    \ifdim\wd\ResumeContactBox>\linewidth
+        \PackageError{11LTX}{RS_CONTACT_TOO_WIDE}{Use an approved shorter contact label or explicitly change the layout.}%
+    \fi
+    \usebox{\ResumeContactBox}%
+}
+\newcommand{\ResumeContactSep}{%
+    \unskip\discretionary{}{}{\kern5pt\textbar\kern5pt}\ignorespaces
+}
