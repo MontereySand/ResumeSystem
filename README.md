@@ -20,5 +20,3 @@ Edit your résumé with the AI in your code editor. One v1-style LaTeX template,
 Open the source, run **LaTeX Workshop: Build with recipe → 11ltx force render**, then **View LaTeX PDF file in VSCode tab**. Save edits for live refresh. On a setup failure, the agent reads logs, requests only the permission needed and resumes.
 
 [Folder/moving guide](legal/GUIDE.md) · [Agent instructions](AGENTS.md)
-
-By Aditya Maramreddy, Henish Patel, and Riley Young. Thanks to James Yu for LaTeX Workshop. First-party license: [MIT](LICENSE); installed TeX/fonts/extensions keep their own licenses. No personal files or TeX binaries are bundled.
