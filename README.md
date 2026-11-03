@@ -1,4 +1,4 @@
-## LaTeX template + AI skills
+# **LaTeX template + AI skills**
 
 Edit your résumé with the AI in your code editor. One LaTeX template, a complete career information pack, and skills that guide the agent. No separate renderer.
 
